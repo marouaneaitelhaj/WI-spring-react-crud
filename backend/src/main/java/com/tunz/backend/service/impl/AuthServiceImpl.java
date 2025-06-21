@@ -1,6 +1,6 @@
 package com.tunz.backend.service.impl;
 
-import com.tunz.backend.config.JwtUtil;
+import com.tunz.backend.util.JwtUtil;
 import com.tunz.backend.dto.AuthRequestDto;
 import com.tunz.backend.entity.AppUser;
 import com.tunz.backend.exception.DuplicateDataException;
