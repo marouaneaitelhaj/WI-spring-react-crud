@@ -94,5 +94,18 @@ export const authApi = {
       console.error('Error registering:', error);
       throw new Error('Registration failed');
     }
+  },
+  me: async (token: string): Promise<User> => {
+    try {
+      const response = await api.get<User>('/auth/me', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      throw new Error('Failed to fetch user data');
+    }
   }
 };
