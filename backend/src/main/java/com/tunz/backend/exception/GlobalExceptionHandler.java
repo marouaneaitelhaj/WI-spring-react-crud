@@ -1,17 +1,20 @@
 package com.tunz.backend.exception;
 
+import jakarta.servlet.ServletException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.tunz.backend.enums.Genre;
 
-
-
+import io.jsonwebtoken.JwtException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,6 +47,20 @@ public class GlobalExceptionHandler {
                 "details", ex.getMessage()
             ));
     }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<?> handleDataIntegrityViolation(DataIntegrityViolationException ex) {
+        String message = ex.getMostSpecificCause() != null ? ex.getMostSpecificCause().getMessage() : "Data integrity violation";
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Map.of("error", message));
+    }
+
+    @ExceptionHandler(DuplicateDataException.class)
+    public ResponseEntity<?> handleDuplicateData(DuplicateDataException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Map.of("error", ex.getMessage()));
+    }
+
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<?> handleHttpMessageNotReadable(HttpMessageNotReadableException ex) {
