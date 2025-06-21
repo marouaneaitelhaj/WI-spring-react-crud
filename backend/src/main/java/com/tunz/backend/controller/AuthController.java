@@ -1,10 +1,16 @@
 package com.tunz.backend.controller;
 
+import com.tunz.backend.dto.UserResponseDto;
+import com.tunz.backend.entity.AppUser;
 import com.tunz.backend.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -24,6 +30,19 @@ public class AuthController {
         authService.register(user);
         Map<String, String> response = new HashMap<>();
         response.put("message", "User registered successfully");
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<UserResponseDto> getCurrentUser(@AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        UserResponseDto response = UserResponseDto.builder()
+                .username(userDetails.getUsername())
+                .build();
+
         return ResponseEntity.ok(response);
     }
 
