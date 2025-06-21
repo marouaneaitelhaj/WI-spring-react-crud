@@ -40,6 +40,22 @@ export const register = createAsyncThunk(
     }
 );
 
+export const checkAuth = createAsyncThunk(
+    'auth/checkAuth',
+    async (_, { rejectWithValue }) => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            return rejectWithValue('No token found');
+        }
+        try {
+            const response = await authApi.me(token);
+            return response;
+        } catch (error) {
+            return rejectWithValue(error instanceof Error ? error.message : 'Authentication check failed');
+        }
+    }
+);
+
 const authSlice = createSlice({
     name: 'auth',
     initialState,
@@ -82,6 +98,24 @@ const authSlice = createSlice({
             .addCase(register.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload as string;
+            });
+
+        builder
+            .addCase(checkAuth.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(checkAuth.fulfilled, (state, action: PayloadAction<User>) => {
+                state.loading = false;
+                state.user = action.payload;
+                state.token = localStorage.getItem('token'); // Ensure token is set from local storage
+            })
+            .addCase(checkAuth.rejected, (state, action) => {
+                localStorage.removeItem('token');
+                state.loading = false;
+                state.error = action.payload as string;
+                state.user = null; // Clear user if authentication check fails
+                state.token = null; // Clear token if authentication check fails
             });
     }
 });

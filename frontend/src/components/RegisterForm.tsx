@@ -10,7 +10,7 @@ interface RegisterFormData {
     password: string;
 }
 
-const RegisterForm: React.FC = () => {
+function RegisterForm() {
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
     const {
@@ -20,7 +20,7 @@ const RegisterForm: React.FC = () => {
     } = useForm<RegisterFormData>();
 
     const onSubmit = async (data: RegisterFormData) => {
-        dispatch(_register(data))
+        dispatch(_register(data));
     };
 
     return (
@@ -80,6 +80,6 @@ const RegisterForm: React.FC = () => {
             </div>
         </div>
     );
-};
+}
 
 export default RegisterForm;

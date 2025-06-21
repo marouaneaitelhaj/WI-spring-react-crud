@@ -3,7 +3,7 @@ import { type Song, type SongFormData } from '../types/Song';
 import type { User } from '../types/User';
 
 // Mock API base URL - in a real app, this would be your backend URL
-const API_BASE_URL = 'http://localhost:8082'; // Using JSONPlaceholder for demo
+const API_BASE_URL = 'http://localhost:8082';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -72,12 +72,16 @@ export const songApi = {
   },
 };
 
+const _api = axios.create({
+  baseURL: API_BASE_URL,
+  timeout: 10000,
+});
 
 export const authApi = {
   // Login user
   login: async (credentials: User) => {
     try {
-      const response = await api.post('/auth/login', credentials
+      const response = await _api.post('/auth/login', credentials
       );
       return response.data;
     } catch (error) {
@@ -88,7 +92,7 @@ export const authApi = {
   // Register user
   register: async (userData: User) => {
     try {
-      const response = await api.post('/auth/register', userData);
+      const response = await _api.post('/auth/register', userData);
       return response.data;
     } catch (error) {
       console.error('Error registering:', error);

@@ -14,7 +14,7 @@ export interface SongFormData {
   album: string;
   releaseYear: number;
   genre: string;
-  duration: number;
+  duration: number | null;
 }
 
 export interface SongState {

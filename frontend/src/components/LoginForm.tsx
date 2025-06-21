@@ -10,7 +10,7 @@ interface LoginFormData {
     password: string;
 }
 
-const LoginForm: React.FC = () => {
+function LoginForm() {
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
     const {
@@ -96,6 +96,6 @@ const LoginForm: React.FC = () => {
             </div>
         </div>
     );
-};
+}
 
 export default LoginForm;
