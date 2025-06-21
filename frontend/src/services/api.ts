@@ -10,6 +10,12 @@ const api = axios.create({
   timeout: 10000,
 });
 
+// Set token from localStorage if available
+const token = localStorage.getItem('token');
+if (token) {
+  api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
+
 export const songApi = {
   // Get all songs
   getSongs: async (): Promise<Song[]> => {
@@ -71,7 +77,7 @@ export const authApi = {
   // Login user
   login: async (credentials: User) => {
     try {
-      const response = await api.post('/api/auth/login', credentials
+      const response = await api.post('/auth/login', credentials
       );
       return response.data;
     } catch (error) {
@@ -82,7 +88,7 @@ export const authApi = {
   // Register user
   register: async (userData: User) => {
     try {
-      const response = await api.post('/api/auth/register', userData);
+      const response = await api.post('/auth/register', userData);
       return response.data;
     } catch (error) {
       console.error('Error registering:', error);
