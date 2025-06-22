@@ -147,7 +147,8 @@ WI-spring-react-crud/
 
 ## 📸 Screenshots
 
-> Add screenshots of your UI here if needed.
+![Screenshot 2025-06-22 044139](https://github.com/user-attachments/assets/77ca548a-2d65-41e4-9bb1-55c238b082e7)
+
 
 ---
 
