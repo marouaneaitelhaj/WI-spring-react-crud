@@ -26,7 +26,7 @@ function RegisterForm() {
     return (
         <div className="max-w-md mx-auto">
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-6">
+                <div className="bg-gradient-to-r from-orange-600 to-orange-700 p-6">
                     <h1 className="text-2xl font-bold text-white">Register</h1>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6">
@@ -38,7 +38,7 @@ function RegisterForm() {
                             type="text"
                             id="username"
                             {...register("username", { required: "Username is required" })}
-                            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
+                            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors ${
                                 errors.username ? "border-red-300" : "border-slate-300"
                             }`}
                             placeholder="Enter your username"
@@ -53,7 +53,7 @@ function RegisterForm() {
                             type="password"
                             id="password"
                             {...register("password", { required: "Password is required" })}
-                            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
+                            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors ${
                                 errors.password ? "border-red-300" : "border-slate-300"
                             }`}
                             placeholder="Enter your password"
@@ -71,7 +71,7 @@ function RegisterForm() {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="flex-1 bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {isSubmitting ? "Logging in..." : "Register"}
                         </button>

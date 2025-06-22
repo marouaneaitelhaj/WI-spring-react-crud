@@ -3,6 +3,8 @@ import { type Song, type SongFormData } from '../types/Song';
 import type { User } from '../types/User';
 
 
+const API_BASE_URL = 'http://localhost:8082';
+
 const api = axios.create({
   baseURL: API_BASE_URL,
   timeout: 10000,

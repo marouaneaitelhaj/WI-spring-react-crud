@@ -59,8 +59,8 @@ const SongList: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-slate-800 flex items-center space-x-3">
-            <Music className="w-8 h-8 text-blue-600" />
-            <span>My Music Library</span>
+            <Music className="w-8 h-8 text-orange-600" />
+            <span>My Tunzz</span>
           </h1>
           <p className="text-slate-600 mt-1">
             {songs.length} {songs.length === 1 ? 'song' : 'songs'} in your collection
@@ -74,7 +74,7 @@ const SongList: React.FC = () => {
             placeholder="Search songs, artists, albums..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+            className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
           />
         </div>
       </div>
@@ -101,7 +101,7 @@ const SongList: React.FC = () => {
           {!searchTerm && (
             <button
               onClick={() => navigate('/add')}
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              className="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors font-medium"
             >
               Add Your First Song
             </button>

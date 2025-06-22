@@ -21,7 +21,7 @@ const SongCard: React.FC<SongCardProps> = ({ song, onEdit, onDelete, isDeleting 
       <div className="p-6">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-semibold text-slate-800 truncate group-hover:text-blue-600 transition-colors">
+            <h3 className="text-lg font-semibold text-slate-800 truncate group-hover:text-orange-600 transition-colors">
               {song.title}
             </h3>
             <p className="text-slate-600 truncate">{song.artist}</p>
@@ -29,7 +29,7 @@ const SongCard: React.FC<SongCardProps> = ({ song, onEdit, onDelete, isDeleting 
           <div className="flex items-center space-x-2 ml-4 opacity-0 group-hover:opacity-100 transition-opacity">
             <button
               onClick={() => onEdit(song)}
-              className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
+              className="p-2 text-slate-400 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-all"
               title="Edit song"
             >
               <Edit2 className="w-4 h-4" />
