@@ -93,10 +93,42 @@ This is the **recommended** way to start the project.
 
 ```
 WI-spring-react-crud/
-├── backend/             → Spring Boot App (API, Auth, JPA)
-├── frontend/            → React App (UI, Redux, Auth)
-├── docker-compose.yml   → Dev environment setup
-└── README.md
+├── backend/                   # Spring Boot backend
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/tunz/backend/
+│   │   │   │   ├── config/           # Security, JWT, CORS config
+│   │   │   │   ├── controller/       # REST controllers (Auth, Song)
+│   │   │   │   ├── dto/              # Data Transfer Objects
+│   │   │   │   ├── entity/           # JPA Entities (AppUser, Song)
+│   │   │   │   ├── enums/            # Enums (e.g. Genre)
+│   │   │   │   ├── exception/        # Custom exceptions and handlers
+│   │   │   │   ├── repository/       # Spring Data JPA repositories
+│   │   │   │   ├── service/          # Service interfaces and impl
+│   │   │   │   ├── util/             # Utility classes (e.g. JwtUtil)
+│   │   │   ├── resources/
+│   │   │   │   ├── db/migration/     # Flyway migrations SQL scripts
+│   │   │   │   ├── static/
+│   │   │   │   ├── templates/
+│   │   │   │   └── application.yml   # Spring Boot configuration
+│   ├── Dockerfile                # Backend Docker container setup
+│   ├── docker-compose.yml        # Docker compose (note: seems here)
+│   ├── pom.xml                   # Maven dependencies and build
+├── frontend/                  # React frontend app
+│   ├── public/                # Static files like index.html
+│   ├── src/
+│   │   ├── assets/            # Images, SVGs etc.
+│   │   ├── components/        # Reusable React components (forms, lists, UI)
+│   │   ├── pages/             # Pages (Home, Login, Register, Song CRUD)
+│   │   ├── routes/            # Route guards and protected routes
+│   │   ├── services/          # API calls, axios config
+│   │   ├── store/             # Redux slices and store config
+│   │   ├── types/             # TypeScript type definitions
+│   │   ├── App.tsx            # Main React app entry point
+│   │   ├── main.tsx           # ReactDOM render and router setup
+│   ├── package.json           # npm dependencies and scripts
+│   ├── vite.config.ts         # Vite build config
+├── README.md                  # This documentation
 ```
 
 ---
