@@ -147,7 +147,14 @@ WI-spring-react-crud/
 
 ## 📸 Screenshots
 
-![Screenshot 2025-06-22 044139](https://github.com/user-attachments/assets/77ca548a-2d65-41e4-9bb1-55c238b082e7)
+![Screenshot 2025-06-22 044053](https://github.com/user-attachments/assets/62999ade-0419-4de9-bf39-a8efe8bfef36)
+![Screenshot 2025-06-22 044109](https://github.com/user-attachments/assets/81aca74b-c4f7-418e-97d3-a2c05c7a1eee)
+![Screenshot 2025-06-22 044119](https://github.com/user-attachments/assets/1ba1b272-3393-44df-8799-ee5792feb0b2)
+![Screenshot 2025-06-22 044126](https://github.com/user-attachments/assets/032d7e46-f12e-4472-b380-6ceb68e96603)
+![Screenshot 2025-06-22 044133](https://github.com/user-attachments/assets/6c58883f-855f-4e02-b596-05ae5f7d05fc)
+![Screenshot 2025-06-22 044139](https://github.com/user-attachments/assets/b943de5a-2836-4dc5-90ad-ecfc0bff2a15)
+
+
 
 
 ---
