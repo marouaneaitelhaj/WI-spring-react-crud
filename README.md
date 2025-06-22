@@ -42,7 +42,7 @@ This is the **recommended** way to start the project.
    ```
 
    This will:
-   - Run the Spring Boot app on `http://localhost:8080`
+   - Run the Spring Boot app on `http://localhost:8082`
    - Set up PostgreSQL and pgAdmin
 
 ---
@@ -67,7 +67,7 @@ This is the **recommended** way to start the project.
    npm run dev
    ```
 
-   The React app will be running on `http://localhost:5173`
+   The React app will be running on `http://localhost:4200`
 
 ---
 
