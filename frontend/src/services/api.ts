@@ -11,15 +11,19 @@ const api = axios.create({
 });
 
 // Set token from localStorage if available
-const token = localStorage.getItem('token');
-if (token) {
-  api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+export function setAuthToken(token: string | null) {
+  if (token) {
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  } else {
+    delete api.defaults.headers.common['Authorization'];
+  }
 }
 
 export const songApi = {
   // Get all songs
   getSongs: async (): Promise<Song[]> => {
     try {
+      setAuthToken(localStorage.getItem('token'));
       const response = await api.get<Song[]>('/api/songs');
       return response.data;
     } catch (error) {
@@ -31,6 +35,7 @@ export const songApi = {
   // Get song by ID
   getSongById: async (id: string): Promise<Song> => {
     try {
+      setAuthToken(localStorage.getItem('token'));
       const response = await api.get<Song>(`/api/songs/${id}`);
       return response.data;
     } catch (error) {
@@ -42,6 +47,7 @@ export const songApi = {
   // Create new song
   createSong: async (songData: SongFormData): Promise<Song> => {
     try {
+      setAuthToken(localStorage.getItem('token'));
       const response = await api.post<Song>('/api/songs', songData);
       return response.data;
     } catch (error) {
@@ -53,6 +59,7 @@ export const songApi = {
   // Update song
   updateSong: async (id: string, songData: SongFormData): Promise<Song> => {
     try {
+      setAuthToken(localStorage.getItem('token'));
       const response = await api.put<Song>(`/api/songs/${id}`, songData);
       return response.data;
     } catch (error) {
@@ -64,6 +71,7 @@ export const songApi = {
   // Delete song
   deleteSong: async (id: string): Promise<void> => {
     try {
+      setAuthToken(localStorage.getItem('token'));
       await api.delete(`/api/songs/${id}`);
     } catch (error) {
       console.error('Error deleting song:', error);
