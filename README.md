@@ -75,13 +75,17 @@ This is the **recommended** way to start the project.
 
 > Default credentials (from preloaded database):
 
-- **Admin**:  
-  `email`: `admin@example.com`  
-  `password`: `admin123`
+- **User1**:  
+  `email`: `alice`  
+  `password`: `password123`
 
-- **User**:  
-  `email`: `user@example.com`  
-  `password`: `user123`
+- **User2**:  
+  `email`: `bob`  
+  `password`: `password123`
+
+- **User3**:  
+  `email`: `charlie`  
+  `password`: `password123`
 
 ---
 
