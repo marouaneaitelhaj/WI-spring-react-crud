@@ -5,7 +5,7 @@ export interface Song {
   album: string;
   releaseYear: number;
   genre: string;
-  duration: number; // in seconds
+  duration: number;
   createdAt?: string;
   updatedAt?: string;
 }

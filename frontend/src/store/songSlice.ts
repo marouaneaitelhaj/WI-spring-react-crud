@@ -9,7 +9,6 @@ const initialState: SongState = {
   error: null,
 };
 
-// Async thunks for API calls
 export const fetchSongs = createAsyncThunk(
   'songs/fetchSongs',
   async (_, { rejectWithValue }) => {
@@ -86,7 +85,6 @@ const songSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Fetch songs
       .addCase(fetchSongs.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -100,7 +98,6 @@ const songSlice = createSlice({
         state.error = action.payload as string;
       })
 
-      // Fetch song by ID
       .addCase(fetchSongById.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -114,7 +111,6 @@ const songSlice = createSlice({
         state.error = action.payload as string;
       })
 
-      // Create song
       .addCase(createSong.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -128,7 +124,6 @@ const songSlice = createSlice({
         state.error = action.payload as string;
       })
 
-      // Update song
       .addCase(updateSong.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -146,7 +141,6 @@ const songSlice = createSlice({
         state.error = action.payload as string;
       })
 
-      // Delete song
       .addCase(deleteSong.pending, (state) => {
         state.loading = true;
         state.error = null;

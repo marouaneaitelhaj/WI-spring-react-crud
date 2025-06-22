@@ -2,15 +2,12 @@ import axios from 'axios';
 import { type Song, type SongFormData } from '../types/Song';
 import type { User } from '../types/User';
 
-// Mock API base URL - in a real app, this would be your backend URL
-const API_BASE_URL = 'http://localhost:8082';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
   timeout: 10000,
 });
 
-// Set token from localStorage if available
 export function setAuthToken(token: string | null) {
   if (token) {
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -20,7 +17,6 @@ export function setAuthToken(token: string | null) {
 }
 
 export const songApi = {
-  // Get all songs
   getSongs: async (): Promise<Song[]> => {
     try {
       setAuthToken(localStorage.getItem('token'));
@@ -32,7 +28,6 @@ export const songApi = {
     }
   },
 
-  // Get song by ID
   getSongById: async (id: string): Promise<Song> => {
     try {
       setAuthToken(localStorage.getItem('token'));
@@ -44,7 +39,6 @@ export const songApi = {
     }
   },
 
-  // Create new song
   createSong: async (songData: SongFormData): Promise<Song> => {
     try {
       setAuthToken(localStorage.getItem('token'));
@@ -56,7 +50,6 @@ export const songApi = {
     }
   },
 
-  // Update song
   updateSong: async (id: string, songData: SongFormData): Promise<Song> => {
     try {
       setAuthToken(localStorage.getItem('token'));
@@ -68,7 +61,6 @@ export const songApi = {
     }
   },
 
-  // Delete song
   deleteSong: async (id: string): Promise<void> => {
     try {
       setAuthToken(localStorage.getItem('token'));
@@ -86,7 +78,6 @@ const _api = axios.create({
 });
 
 export const authApi = {
-  // Login user
   login: async (credentials: User) => {
     try {
       const response = await _api.post('/auth/login', credentials
@@ -97,7 +88,6 @@ export const authApi = {
       throw new Error('Login failed');
     }
   },
-  // Register user
   register: async (userData: User) => {
     try {
       const response = await _api.post('/auth/register', userData);

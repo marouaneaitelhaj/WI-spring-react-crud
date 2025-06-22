@@ -65,7 +65,7 @@ const authSlice = createSlice({
             state.token = null;
             state.loading = false;
             state.error = null;
-            localStorage.removeItem('token'); // Clear token from local storage
+            localStorage.removeItem('token');
         }
     },
     extraReducers: (builder) => {
@@ -78,7 +78,7 @@ const authSlice = createSlice({
                 state.loading = false;
                 state.user = action.payload.user;
                 state.token = action.payload.token;
-                localStorage.setItem('token', action.payload.token); // Store token in local storage
+                localStorage.setItem('token', action.payload.token);
             })
             .addCase(login.rejected, (state, action) => {
                 state.loading = false;
@@ -93,7 +93,7 @@ const authSlice = createSlice({
                 state.loading = false;
                 state.user = action.payload.user;
                 state.token = action.payload.token;
-                localStorage.setItem('token', action.payload.token); // Store token in local storage
+                localStorage.setItem('token', action.payload.token);
             })
             .addCase(register.rejected, (state, action) => {
                 state.loading = false;
@@ -108,14 +108,14 @@ const authSlice = createSlice({
             .addCase(checkAuth.fulfilled, (state, action: PayloadAction<User>) => {
                 state.loading = false;
                 state.user = action.payload;
-                state.token = localStorage.getItem('token'); // Ensure token is set from local storage
+                state.token = localStorage.getItem('token');
             })
             .addCase(checkAuth.rejected, (state, action) => {
                 localStorage.removeItem('token');
                 state.loading = false;
                 state.error = action.payload as string;
-                state.user = null; // Clear user if authentication check fails
-                state.token = null; // Clear token if authentication check fails
+                state.user = null;
+                state.token = null;
             });
     }
 });
